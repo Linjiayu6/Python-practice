@@ -39,7 +39,7 @@
 - for(i = 0; i < len(L); i++)
 
 ### 2.1 迭代List/Tuple
-- * [list, tuple, dict 都可以迭代];
+- *[list, tuple, dict 都可以迭代];
   因为Python的for循环不仅可以用在list或tuple上，还可以作用在其他可迭代对象上。
    ```
     >>> d = {'a': 1, 'b': 2, 'c': 3}
@@ -62,7 +62,7 @@
 
   ```
 ### 2.3 迭代string
-- * [string 可以迭代];
+- *[string 可以迭代];
   
 ### 2.4 是否可以迭代判断
   ```
@@ -136,13 +136,15 @@ Python内置的enumerate函数可以把一个list变成索引-元素对，这样
   print(Dict_new)
 ```
 
+## 4.生成器 Generator
 
-## 4.生成器
+### 4.1 基础
 - 背景: 通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
 
-- 解决: 在Python中，这种一边循环一边计算的机制，称为生成器（Generator）。
+- 解决: 在Python中，这种一边循环一边计算的机制，称为生成器（Generator）
 
-- 创建: 要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator
+- 创建: 要创建一个generator，有很多种方法。
+- (1) 第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator
 
 ```
   # list
@@ -178,4 +180,36 @@ Python内置的enumerate函数可以把一个list变成索引-元素对，这样
 49
 64
 81
+```
+
+### 4.2 Fibonacci
+- (2) 第二种
+```
+"""
+比如，著名的斐波拉契数列（Fibonacci），除第一个和第二个数外，任意一个数都可由前两个数相加得到：
+1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+"""
+
+def Fibonacci(Max):
+  n, a, b = 0, 0, 1
+  while n < Max:
+    print b
+    a, b = b, a + b
+    n = n + 1
+
+Fibonacci(5)
+```
+
+有生成器的写法
+```
+def Fibonacci_generator(Max):
+  n, a, b = 0, 0, 1
+  while n < Max:
+    yield b
+    a, b = b, a + b
+    n = n + 1
+
+print('======= 生成器 =======')
+for data in Fibonacci_generator(6):
+  print data
 ```

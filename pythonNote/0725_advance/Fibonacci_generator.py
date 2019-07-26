@@ -13,3 +13,14 @@ def Fibonacci(Max):
     n = n + 1
 
 Fibonacci(5)
+
+def Fibonacci_generator(Max):
+  n, a, b = 0, 0, 1
+  while n < Max:
+    yield b
+    a, b = b, a + b
+    n = n + 1
+
+print('======= 生成器 =======')
+for data in Fibonacci_generator(6):
+  print data

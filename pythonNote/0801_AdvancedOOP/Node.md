@@ -149,3 +149,57 @@ class RunnableMixin(object):
 class Dog(Animal, RunnableMixin):
     pass
 ```
+
+## 4. 定制类
+
+### 4.1 __str__
+```
+# ====== 1 定制类 ======
+class Student (object):
+    def __init__ (self, name):
+      self.name = name
+
+# <__main__.Student object at 0x10fb34210> 输出的不好看
+print Student('string')
+
+
+# ====== 2 定制类 __str__ ======
+class Student1 (object):
+    def __init__ (self, name):
+        self.name = name
+    def __str__ (self):
+        return self.name
+
+# name
+print Student1('name')
+```
+
+### 4.2 __iter__
+### 4.3 __getitem__
+### 4.4 __getattr__
+### 4.5 __call__
+https://www.liaoxuefeng.com/wiki/897692888725344/939415213621408
+
+
+## 5. 元类
+
+### 5.1 type()
+
+```
+# 当Python解释器载入hello模块时
+from hello import HelloClass
+
+# h实例变量 HelloClass类
+h = HelloClass()
+h.sayHello()
+
+# type()函数可以查看一个类型或变量的类型
+# <class 'hello.HelloClass'> h是实例 它的类型是class
+print type(h)
+# <type 'type'> HelloClass类 类的类型是type
+print type(HelloClass)
+```
+
+### 5.2 metaclass
+- 除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass。
+- https://www.liaoxuefeng.com/wiki/897692888725344/923030550637312

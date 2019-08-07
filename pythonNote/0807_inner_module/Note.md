@@ -85,3 +85,82 @@ print d_ordered.keys()
 >>> c
 Counter({'g': 2, 'm': 2, 'r': 2, 'a': 1, 'i': 1, 'o': 1, 'n': 1, 'p': 1})
 ```
+
+## 2. base64
+
+## 3. struct
+- Python没有专门处理字节的数据类型。但由于str既是字符串，又可以表示字节，所以，字节数组＝str。而在C语言中，我们可以很方便地用struct、union来处理字节，以及字节和int，float的转换
+
+## 4. hashlib
+
+- Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。
+
+### 4.1 MD5
+```
+# -*- coding: utf-8 -*
+
+import hashlib
+
+md5 = hashlib.md5()
+md5.update('how to use md5 in python hashlib?')
+
+# d26a53750bc40b38b65a520292f69306
+print md5.hexdigest()
+```
+
+### 4.2 sha1
+```
+# -*- coding: utf-8 -*
+
+import hashlib
+
+sha1 = hashlib.sha1()
+
+# 如果数据量很大，可以分块多次调用update()
+sha1.update('how to use sha1 in ')
+sha1.update('python hashlib?')
+
+# 2c76b57293ce30acef38d98f6046927161b46a44
+print sha1.hexdigest()
+
+```
+
+## 5. itertools
+- Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。
+- import itertools
+- 知道就行了, 就是个迭代器
+  
+```
+import itertools
+
+# # repeat('A', 10)
+ns = itertools.repeat('A', 10)
+
+# repeat('A', 10)
+print(ns)
+
+for i in ns:
+    print(i)
+```
+
+## 6. XML
+## 7. HTMLParser
+- 爬虫需要
+```
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Encountered a start tag:", tag)
+
+    def handle_endtag(self, tag):
+        print("Encountered an end tag :", tag)
+
+    def handle_data(self, data):
+        print("Encountered some data  :", data)
+
+parser = MyHTMLParser()
+parser.feed('<html><head><title>Test</title></head>'
+            '<body><h1>Parse me!</h1></body></html>')
+
+```
